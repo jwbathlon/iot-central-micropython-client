@@ -4,12 +4,13 @@ import ure
 import json
 from utime import time,sleep
 import gc
-try:
-    from umqtt.robust import MQTTClient
-except:
-    import mip
-    mip.install('github:Azure/iot-central-micropython-client/package.json')
-    from umqtt.robust import MQTTClient
+from umqtt.robust import MQTTClient
+#try:
+#    from umqtt.robust2 import MQTTClient
+#except:
+#    import mip
+#    mip.install('github:Azure/iot-central-micropython-client/package.json')
+#    from umqtt.robust2 import MQTTClient
 
 gc.collect()
 class Command():
