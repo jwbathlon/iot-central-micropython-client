@@ -103,7 +103,8 @@ class IoTCClient():
         prov = ProvisioningClient(
             self._id_scope, self._device_id, self._credentials_type,self._credentials,self._logger,self._model_id)
         creds = prov.register()
-        self._mqtt_client = MQTTClient(self._device_id, creds.host, 8883, creds.user.encode(
+        if creds is not None:
+            self._mqtt_client = MQTTClient(self._device_id, creds.host, 8883, creds.user.encode(
             'utf-8'), creds.password.encode('utf-8'), ssl=True, keepalive=60)
         self._commands_regex = ure.compile(
             '\$iothub\/methods\/POST\/(.+)\/\?\$rid=(.+)')
